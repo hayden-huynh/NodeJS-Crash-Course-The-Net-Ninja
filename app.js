@@ -16,7 +16,7 @@ const dbURI = `mongodb+srv://${mongoDb.username}:${mongoDb.password}@cluster0.op
 mongoose
   .connect(dbURI, { useNewUrlParser: true, useUnifiedTopology: true })
   .then((result) => {
-    // console.log("Connected to DB");
+    console.log("Connected to DB");
 
     // Listen for requests at specified port. Only start listening to requests after DB has been connected
     app.listen(3000);
@@ -47,6 +47,7 @@ app.use(morgan("dev"));
 
 // Necessary middleware to parse data received from front-end to an object readable in JavaScript. Need this to handle POST request properly
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json({ extended: true }));
 
 // app.get("/add-blog", (req, res) => {
 //   const blog = new Blog({
